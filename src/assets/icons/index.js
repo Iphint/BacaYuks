@@ -13,6 +13,7 @@ import BookmarkActive from './BookmarkActive.png';
 import BookmarkNonActive from './BookmarkNonActive.png';
 import Tafsir from './Tafsir.png';
 import ArrowBack from './ArrowBack.png';
+import PersonMarker from './PersonMarker.png';
 
 export {
   SplashBawah,
@@ -30,4 +31,5 @@ export {
   Map,
   Tafsir,
   ArrowBack,
+  PersonMarker,
 };
