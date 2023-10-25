@@ -7,8 +7,10 @@ import {
 } from '@react-navigation/drawer';
 import Gap from './atoms/Gap';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native';
 
 const CustomDrawer = (props) => {
+  const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -18,6 +20,11 @@ const CustomDrawer = (props) => {
   if (!fontsLoaded) {
     return <Text>Loading fonts</Text>;
   }
+
+  const handleLogout = () => {
+    navigation.navigate('Login');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -41,9 +48,11 @@ const CustomDrawer = (props) => {
         <View style={styles.logoutContainer}>
           <Image source={Logout} style={{ width: 25, height: 25 }} />
           <Gap width={10} />
-          <Text style={{ fontFamily: 'Poppins-SemiBold', color: 'red' }}>
-            Logout
-          </Text>
+          <TouchableOpacity onPress={handleLogout}>
+            <Text style={{ fontFamily: 'Poppins-SemiBold', color: 'red' }}>
+              Logout
+            </Text>
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     </View>

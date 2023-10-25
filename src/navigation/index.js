@@ -10,6 +10,8 @@ import { Text } from 'react-native';
 import Maps from '../pages/Maps';
 import Tafsir from '../pages/Tafsir';
 import CustomHeader from '../components/atoms/CustomHeader';
+import SignUp from '../pages/SignUp';
+import Login from '../pages/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +48,16 @@ const Router = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name="MainApp"
         component={MainApp}
         options={{ headerShown: false }}
@@ -55,7 +67,10 @@ const Router = () => {
         component={Detail}
         options={{
           header: ({ navigation }) => (
-            <CustomHeader title="Detail Surah" onBack={() => navigation.goBack()} />
+            <CustomHeader
+              title="Detail Surah"
+              onBack={() => navigation.goBack()}
+            />
           ),
         }}
       />
@@ -64,7 +79,10 @@ const Router = () => {
         component={Tafsir}
         options={{
           header: ({ navigation }) => (
-            <CustomHeader title="Tafsir Ayat" onBack={() => navigation.goBack()} />
+            <CustomHeader
+              title="Tafsir Ayat"
+              onBack={() => navigation.goBack()}
+            />
           ),
         }}
       />

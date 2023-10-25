@@ -1,12 +1,13 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import CustomInputText from '../components/atoms/CustomInputText';
 import Gap from '../components/atoms/Gap';
+import CustomInputText from '../components/atoms/CustomInputText';
 import Button from '../components/atoms/Button';
+import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 
-const Login = () => {
+const SignUp = () => {
   let [fontsLoaded] = useFonts({
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -15,42 +16,42 @@ const Login = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.navigate('SignUp');
-  };
-
-  const handleLogin = () => {
-    navigation.navigate('MainApp');
+    navigation.navigate('Login');
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.title}>
-        <Text style={styles.textTitle}>Sign In</Text>
+        <Text style={styles.textTitle}>Sign Up</Text>
       </View>
-      <CustomInputText title={'Email'} placeholder={'Masukan email anda...'} />
+      <CustomInputText title={'Email'} placeholder={'Email ...'} />
       <Gap height={30} />
       <CustomInputText
         title={'Password'}
-        placeholder={'Masukan password anda...'}
+        placeholder={'Password ...'}
+        isPassword={true}
+      />
+      <Gap height={30} />
+      <CustomInputText
+        title={'Repeat Password'}
+        placeholder={'Repeat password ...'}
         isPassword={true}
       />
       <Gap height={40} />
-      <TouchableOpacity onPress={handleLogin}>
-        <Button button={'Sign In'} />
-      </TouchableOpacity>
+      <Button button={'Sign up'} />
       <Gap height={20} />
       <View style={styles.haveAccount}>
-        <Text style={styles.haveAccountText}>Don't have an account !!</Text>
+        <Text style={styles.haveAccountText}>Already have an account !</Text>
         <Gap width={7} />
         <TouchableOpacity onPress={handlePress}>
-          <Text style={styles.haveAccountTextLogin}>Register</Text>
+          <Text style={styles.haveAccountTextLogin}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default Login;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: '#ffff',
     paddingBottom: 24,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Regular'
   },
   haveAccount: {
     flexDirection: 'row',
