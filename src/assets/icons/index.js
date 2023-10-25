@@ -14,6 +14,7 @@ import BookmarkNonActive from './BookmarkNonActive.png';
 import Tafsir from './Tafsir.png';
 import ArrowBack from './ArrowBack.png';
 import PersonMarker from './PersonMarker.png';
+import Emoji from './Emoji.gif';
 
 export {
   SplashBawah,
@@ -32,4 +33,5 @@ export {
   Tafsir,
   ArrowBack,
   PersonMarker,
+  Emoji,
 };

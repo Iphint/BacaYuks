@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    navigation.navigate('MainApp');
+    navigation.replace('MainApp');
   };
 
   return (

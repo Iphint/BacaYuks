@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { LogoQuran, Logout } from '../assets';
 import {
   DrawerContentScrollView,
@@ -8,9 +8,10 @@ import {
 import Gap from './atoms/Gap';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
+import ModalCustom from './atoms/ModalCustom';
 
 const CustomDrawer = (props) => {
-  const navigation = useNavigation();
+  const [isModalVisible, setModalVisible] = useState(false);
   let [fontsLoaded] = useFonts({
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -22,7 +23,7 @@ const CustomDrawer = (props) => {
   }
 
   const handleLogout = () => {
-    navigation.navigate('Login');
+    setModalVisible(true);
   };
 
   return (
@@ -46,15 +47,26 @@ const CustomDrawer = (props) => {
       <Gap height={17} />
       <TouchableOpacity activeOpacity={0.7}>
         <View style={styles.logoutContainer}>
-          <Image source={Logout} style={{ width: 25, height: 25 }} />
-          <Gap width={10} />
-          <TouchableOpacity onPress={handleLogout}>
+          <TouchableOpacity
+            onPress={handleLogout}
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Image source={Logout} style={{ width: 25, height: 25 }} />
+            <Gap width={10} />
             <Text style={{ fontFamily: 'Poppins-SemiBold', color: 'red' }}>
               Logout
             </Text>
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
+      <ModalCustom
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      />
     </View>
   );
 };
