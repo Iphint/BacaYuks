@@ -15,6 +15,7 @@ import Tafsir from './Tafsir.png';
 import ArrowBack from './ArrowBack.png';
 import PersonMarker from './PersonMarker.png';
 import Emoji from './Emoji.gif';
+import Card from './Card.gif';
 
 export {
   SplashBawah,
@@ -34,4 +35,5 @@ export {
   ArrowBack,
   PersonMarker,
   Emoji,
+  Card,
 };

@@ -12,6 +12,8 @@ import Tafsir from '../pages/Tafsir';
 import CustomHeader from '../components/atoms/CustomHeader';
 import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';
+import Profile from '../pages/Profile';
+import Doa from '../pages/Doa';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,19 @@ const MainApp = () => {
         options={{ headerShown: false }}
       />
       <Drawer.Screen name="Maps" component={Maps} />
+      <Drawer.Screen name="Doa - Doa" component={Doa} />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          header: ({ navigation }) => (
+            <CustomHeader
+              title="Profile"
+              onBack={() => navigation.goBack()}
+            />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };

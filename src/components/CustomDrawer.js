@@ -7,7 +7,6 @@ import {
 } from '@react-navigation/drawer';
 import Gap from './atoms/Gap';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native';
 import ModalCustom from './atoms/ModalCustom';
 
 const CustomDrawer = (props) => {
