@@ -22,7 +22,7 @@ Install my-project with npm
 - Mathilda Ora : screen profile
 
 
-## Link Dokumentasi
+## Link Dokumentasi Team
 
 https://drive.google.com/file/d/1cvEi3Y9bEqBC6ZXKz3vcRknzjeOykQlP/view?usp=sharing
 
