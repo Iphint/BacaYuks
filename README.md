@@ -21,3 +21,8 @@ Install my-project with npm
 - M Ilham Firdaus : screen doa - doa
 - Mathilda Ora : screen profile
 
+
+## Link Dokumentasi
+
+https://drive.google.com/file/d/1cvEi3Y9bEqBC6ZXKz3vcRknzjeOykQlP/view?usp=sharing
+
