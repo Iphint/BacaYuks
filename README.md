@@ -15,7 +15,7 @@ Install my-project with npm
 ## Task Tugas per masing masing mahasiswa
 
 - Andi Yusuf R : bikin screen sign in & sign up
-- Muhammad Arifin : integrating API
+- Muhammad Arifin : integrating API detail
 - Fakhruddin Arrozi : bagian maps
 - Cholifatul Maulidia : bagiam PIC Design, dokumentasi Laporan
 - M Ilham Firdaus : screen doa - doa
