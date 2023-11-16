@@ -4,13 +4,19 @@ import Modal from 'react-native-modal';
 import { useNavigation } from '@react-navigation/native';
 import { Emoji } from '../../assets';
 import Gap from './Gap';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ModalCustom = ({ isModalVisible, setModalVisible }) => {
   const navigation = useNavigation();
 
-  const confirmLogout = () => {
+  const confirmLogout = async () => {
     navigation.navigate('Login');
-    setModalVisible(false);
+    try {
+      await AsyncStorage.removeItem('userSession');
+      navigation.navigate('Login');
+    } catch (e) {
+      console.error('Error on logout:', e);
+    }
   };
 
   const declineLogout = () => {

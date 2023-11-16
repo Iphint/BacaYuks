@@ -17,7 +17,7 @@ Install my-project with npm
 - Andi Yusuf R : bikin screen sign in & sign up
 - Muhammad Arifin : integrating API detail
 - Fakhruddin Arrozi : bagian maps
-- Cholifatul Maulidia : bagiam PIC Design, dokumentasi Laporan
+- Cholifatul Maulidia : bagian PIC Design, dokumentasi Laporan
 - M Ilham Firdaus : screen doa - doa
 - Mathilda Ora : screen profile
 

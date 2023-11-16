@@ -55,9 +55,7 @@ const Maps = () => {
 
   return (
     <View style={styles.container}>
-      <Gap height={10} />
-      <Search placeholder={'Cari masjid terdekat...'} />
-      <Gap height={10} />
+      <Gap height={15} />
       <View style={styles.maps}>
         <Image source={Map} style={{ width: 20, height: 20 }} />
         <Gap width={10} />
