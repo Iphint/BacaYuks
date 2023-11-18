@@ -14,6 +14,7 @@ import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Doa from '../pages/Doa';
+import Dzikir from '../pages/Dzikir';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ const MainApp = () => {
       />
       <Drawer.Screen name="Maps" component={Maps} />
       <Drawer.Screen name="Doa - Doa" component={Doa} />
+      <Drawer.Screen name="Dzikir" component={Dzikir} />
       <Drawer.Screen
         name="Profile"
         component={Profile}
