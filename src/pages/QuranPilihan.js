@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 
 const QuranPilihan = () => {
-  const [bookmarkedAyahs, setBookmarkedAyahs] = useState([]);
-
-  useEffect(() => {
-    const loadBookmarkedAyahs = async () => {
-      try {
-        const ayahs = await AsyncStorage.getItem('bookmarks');
-        if (ayahs !== null) {
-          setBookmarkedAyahs(JSON.parse(ayahs));
-        }
-      } catch (e) {
-        console.error('Failed to load bookmarks.', e);
-      }
-    };
-
-    loadBookmarkedAyahs();
-  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Surah pilihan harian</Text>
-      {/* {bookmarkedAyahs.length > 0 ? (
-        bookmarkedAyahs.map((ayah, index) => (
-          <View key={index} style={styles.ayahContainer}>
-            <Text style={styles.ayahNumber}>Ayah Number: {ayah.number}</Text>
-          </View>
-        ))
-      ) : (
-        <Text>Belum ada ayat yang dibookmark.</Text>
-      )} */}
     </ScrollView>
   );
 };
@@ -47,6 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#FFFF'
   },
   ayahContainer: {
     marginBottom: 10,

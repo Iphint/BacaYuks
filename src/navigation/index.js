@@ -6,7 +6,7 @@ import Detail from '../pages/Detail';
 import HomePage from '../pages/HomePage';
 import SplashScreen from '../pages/SplashScreen';
 import { useFonts } from 'expo-font';
-import { Text } from 'react-native';
+import { Image, Text } from 'react-native';
 import Maps from '../pages/Maps';
 import Tafsir from '../pages/Tafsir';
 import CustomHeader from '../components/atoms/CustomHeader';
@@ -15,6 +15,7 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Doa from '../pages/Doa';
 import Dzikir from '../pages/Dzikir';
+import { Counter, DoaImg, Homepage, Location, Man, Pray } from '../assets';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,20 +36,49 @@ const MainApp = () => {
       <Drawer.Screen
         name="Homepage"
         component={HomePage}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+          drawerIcon: ({ size }) => (
+            <Image source={Homepage} style={{ width: size, height: size }} />
+          ),
+        }}
       />
-      <Drawer.Screen name="Maps" component={Maps} />
-      <Drawer.Screen name="Doa - Doa" component={Doa} />
-      <Drawer.Screen name="Dzikir" component={Dzikir} />
+      <Drawer.Screen
+        name="Maps"
+        component={Maps}
+        options={{
+          drawerIcon: ({ size }) => (
+            <Image source={Location} style={{ width: size, height: size }} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Doa - Doa"
+        component={Doa}
+        options={{
+          drawerIcon: ({ size }) => (
+            <Image source={Pray} style={{ width: size, height: size }} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Dzikir"
+        component={Dzikir}
+        options={{
+          drawerIcon: ({ size }) => (
+            <Image source={Counter} style={{ width: size, height: size }} />
+          ),
+        }}
+      />
       <Drawer.Screen
         name="Profile"
         component={Profile}
         options={{
           header: ({ navigation }) => (
-            <CustomHeader
-              title="Profile"
-              onBack={() => navigation.goBack()}
-            />
+            <CustomHeader title="Profile" onBack={() => navigation.goBack()} />
+          ),
+          drawerIcon: ({ size }) => (
+            <Image source={Man} style={{ width: size, height: size }} />
           ),
         }}
       />

@@ -8,11 +8,17 @@ import Point from './Point.png';
 import Share from './Share.png';
 import Play from './Play.png';
 import Map from './Map.png';
+import Pray from './Pray.png';
+import Homepage from './Homepage.png';
 import Pause from './Pause.png';
 import BookmarkActive from './BookmarkActive.png';
 import BookmarkNonActive from './BookmarkNonActive.png';
 import Tafsir from './Tafsir.png';
+import Location from './Location.png';
+import Counter from './Check.png';
 import ArrowBack from './ArrowBack.png';
+import DoaImg from './Doa.png';
+import Man from './Man.png';
 import PersonMarker from './PersonMarker.png';
 import Emoji from './Emoji.gif';
 import Card from './Card.gif';
@@ -36,4 +42,10 @@ export {
   PersonMarker,
   Emoji,
   Card,
+  DoaImg,
+  Counter,
+  Man,
+  Location,
+  Homepage,
+  Pray,
 };
