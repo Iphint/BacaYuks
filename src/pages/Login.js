@@ -5,7 +5,7 @@ import Gap from '../components/atoms/Gap';
 import Button from '../components/atoms/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { GET_ALL_USERS, LOGIN_USER } from '../utils/Mutation';
+import { GET_ALL_USERS } from '../utils/Mutation';
 import { useQuery } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

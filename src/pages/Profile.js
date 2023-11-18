@@ -28,7 +28,13 @@ const Profile = () => {
         <Gap height={40} />
         <Image source={Emoji} style={styles.profile} />
         <Gap height={40} />
-        {userData && <Text style={styles.text}>Hallo,{userData.email}</Text>}
+        {userData && (
+          <View style={styles.def}>
+            <Text style={styles.text}>Hallo, {userData.name}</Text>
+            <Gap height={20} />
+            <Text style={styles.text}>{userData.email}</Text>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -52,5 +58,9 @@ const styles = StyleSheet.create({
   text: {
     color: '#ffff',
     fontSize: 20,
+  },
+  def: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
