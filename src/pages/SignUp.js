@@ -13,6 +13,7 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [tambahUser, { data, loading, error }] = useMutation(INSERT_USER);
   const {
     data: userData,
@@ -32,6 +33,11 @@ const SignUp = () => {
   const validatePassword = (password) => {
     return password.length >= 8;
   };
+
+  if (password !== repeatPassword) {
+    Alert.alert('Error', 'Password dan Repeat password harus sama.');
+    return;
+  }
 
   const handlePress = async () => {
     if (checkingUserLoading) {
@@ -55,7 +61,7 @@ const SignUp = () => {
 
       // Cek apakah pengguna sudah ada
       if (checkResult.data && checkResult.data.user.length > 0) {
-        Alert.alert('Error', 'Email sudah terdaftar.');
+        Alert.alert('Error', 'Email sudah terdaftar, gunakan email yang lain.');
         return;
       }
 
@@ -111,6 +117,14 @@ const SignUp = () => {
         title={'Password'}
         placeholder={'Password ...'}
         onChangeText={setPassword}
+        value={password}
+        isPassword={true}
+      />
+      <Gap height={30} />
+      <CustomInputText
+        title={'Repeat password'}
+        placeholder={'Repeat password ...'}
+        onChangeText={setRepeatPassword}
         value={password}
         isPassword={true}
       />
