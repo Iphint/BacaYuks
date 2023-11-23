@@ -15,7 +15,8 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Doa from '../pages/Doa';
 import Dzikir from '../pages/Dzikir';
-import { Counter, DoaImg, Homepage, Location, Man, Pray } from '../assets';
+import { Asmaulq, Counter, DoaImg, Homepage, Location, Man, Pray } from '../assets';
+import Asmaul from '../pages/Asmaul';
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +68,15 @@ const MainApp = () => {
         options={{
           drawerIcon: ({ size }) => (
             <Image source={Counter} style={{ width: size, height: size }} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Asmaul Qusna"
+        component={Asmaul}
+        options={{
+          drawerIcon: ({ size }) => (
+            <Image source={Asmaulq} style={{ width: size, height: size }} />
           ),
         }}
       />

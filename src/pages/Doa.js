@@ -1,26 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
   ScrollView,
+  TextInput,
 } from 'react-native';
 import CardDoa from '../components/CardDoa';
 import Search from '../components/Search';
 
 const Doa = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [doaList, setDoaList] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          'https://doa-doa-api-ahmadramadhan.fly.dev/api'
+        );
+        const data = await res.json();
+        setDoaList(data);
+        console.log(data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const filteredDoaList = doaList.filter((doa) =>
+    doa.doa.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         {isSearchVisible ? (
-          <Search placeholder={'cari doa yang anda inginkan ...'} />
+          <Search placeholder={'Cari doa yang Anda inginkan...'} onSearch={(text) => setSearchText(text)}/>
         ) : (
           <Text style={styles.title}>Doa sehari hari.</Text>
         )}
@@ -30,18 +54,17 @@ const Doa = () => {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ marginBottom: 80 }}
+        style={{ marginBottom: 80, marginHorizontal: 7 }}
       >
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
-        <CardDoa />
+        {filteredDoaList.map((doa) => (
+          <CardDoa
+            key={doa.id}
+            doa={doa.doa}
+            ayat={doa.ayat}
+            latin={doa.latin}
+            artinya={doa.artinya}
+          />
+        ))}
       </ScrollView>
     </View>
   );

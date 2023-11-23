@@ -19,6 +19,7 @@ import Counter from './Check.png';
 import ArrowBack from './ArrowBack.png';
 import DoaImg from './Doa.png';
 import Man from './Man.png';
+import Asmaulq from './99.png';
 import PersonMarker from './PersonMarker.png';
 import Emoji from './Emoji.gif';
 import Card from './Card.gif';
@@ -48,4 +49,5 @@ export {
   Location,
   Homepage,
   Pray,
+  Asmaulq,
 };

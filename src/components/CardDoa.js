@@ -3,18 +3,13 @@ import React from 'react';
 import { Image } from 'react-native';
 import { Card } from '../assets';
 
-const CardDoa = () => {
+const CardDoa = ({ doa, ayat, latin, artinya }) => {
   return (
     <View style={styles.container}>
-      <Image source={Card} style={{ width: 80, height: 80 }} />
-      <Text style={{ fontSize: 20 }}>CardDoa</Text>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis dolores
-        quos excepturi ea impedit nisi sit. Eligendi, enim? Nisi impedit
-        veritatis neque obcaecati, corporis vero quisquam consequatur cupiditate
-        ut iure optio unde officia tempora numquam placeat aperiam ratione quod
-        consectetur!
-      </Text>
+      <Text style={styles.title}>{doa}</Text>
+      <Text style={styles.detail}>Ayat: {ayat}</Text>
+      <Text style={styles.detail}>Latin: {latin}</Text>
+      <Text style={styles.detail}>Artinya: {artinya}</Text>
     </View>
   );
 };
@@ -29,5 +24,16 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     borderColor: '#ffff',
     borderRadius: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 5,
+    color: '#ffffff',
+  },
+  detail: {
+    fontSize: 16,
+    marginVertical: 2,
+    color: '#ffffff',
   },
 });
