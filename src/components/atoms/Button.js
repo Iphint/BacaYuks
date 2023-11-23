@@ -13,6 +13,8 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: "center",
+    width:320,
     marginHorizontal: 20,
     borderWidth: 1,
     padding: 15,

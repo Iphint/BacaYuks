@@ -28,16 +28,17 @@ const SignUp = () => {
       </View>
       <View style={styles.bluePopUp}/>
       <View style={styles.containerOne}>
+        <Text style={styles.title}>Daftar</Text>
         <CustomInputText placeholder={'Email'} />
         <Gap height={30} />
         <CustomInputText placeholder={'Kata Sandi'} isPassword={true} />
         <Gap height={30} />
         <CustomInputText placeholder={'Ulangi Kata Sandi'} isPassword={true} />
         <Gap height={40} />
-        <Button button={'Sign up'} />
+        <Button button={'Daftar'} />
         <Gap height={20} />
         <View style={styles.haveAccount}>
-          <Text style={styles.haveAccountText}>Already have an account !</Text>
+          <Text style={styles.haveAccountText}>Sudah punya akun?</Text>
           <Gap width={7} />
           <TouchableOpacity onPress={handlePress}>
             <Text style={styles.haveAccountTextLogin}>Login</Text>
@@ -53,8 +54,14 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     position: 'relative',
+  },
+  title: {
+    paddingLeft:46,
+    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    color: '#69D7FC'
   },
   logo: {
     marginTop: 60,
@@ -65,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   haveAccountText: {
-    color: '#ffff',
+    color: 'rgba(30,30,30, 0.23)',
     fontSize: 15,
   },
   haveAccountTextLogin: {
@@ -75,7 +82,8 @@ const styles = StyleSheet.create({
   },
   containerOne: {
     flex: 1,
-    backgroundColor: 'gray',
+    marginTop: 60,
+    backgroundColor: 'white',
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
     paddingTop: 21,
@@ -86,7 +94,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: 100,
-    marginTop: 260,
+    marginTop: 320,
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
   },

@@ -30,6 +30,8 @@ export default CustomInputText;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 30,
+    alignSelf: "center",
+    width:320,
   },
   input: {
     borderWidth: 2,
