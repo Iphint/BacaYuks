@@ -34,13 +34,14 @@ const SignUp = () => {
     return password.length >= 8;
   };
 
-  if (password !== repeatPassword) {
-    Alert.alert('Error', 'Password dan Repeat password harus sama.');
-    return;
-  }
-
   const handlePress = async () => {
     if (checkingUserLoading) {
+      return;
+    }
+
+    // Validasi input tidak boleh kosong
+    if (!name || !email || !password || !repeatPassword) {
+      Alert.alert('Error', 'Semua input harus diisi.');
       return;
     }
 
@@ -52,6 +53,12 @@ const SignUp = () => {
 
     if (!validatePassword(password)) {
       Alert.alert('Error', 'Password harus minimal 8 karakter.');
+      return;
+    }
+
+    // Validasi apakah password dan repeatPassword sama
+    if (password !== repeatPassword) {
+      Alert.alert('Error', 'Password dan Repeat password harus sama.');
       return;
     }
 
@@ -82,6 +89,7 @@ const SignUp = () => {
         setName('');
         setEmail('');
         setPassword('');
+        setRepeatPassword('');
         navigation.navigate('Login');
       }
     } catch (error) {
@@ -125,7 +133,7 @@ const SignUp = () => {
         title={'Repeat password'}
         placeholder={'Repeat password ...'}
         onChangeText={setRepeatPassword}
-        value={password}
+        value={repeatPassword}
         isPassword={true}
       />
       <Gap height={40} />

@@ -13,35 +13,52 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import QuranPilihan from '../pages/QuranPilihan';
 
+const fetchSurahData = async (setQuery) => {
+  try {
+    const response = await axios.get('https://api.quran.gading.dev/surah');
+    setQuery(response.data.data);
+  } catch (error) {
+    console.error('Error fetching surah data:', error);
+  }
+};
+
 const HomeTabSection = ({ searchQuery }) => {
   const [surahData, setSurahData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [visibleData, setVisibleData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const itemsPerPage = 15;
 
   useEffect(() => {
-    const fetchSurahData = async () => {
-      try {
-        const response = await axios.get('https://api.quran.gading.dev/surah');
-        setSurahData(response.data.data);
-        setVisibleData(response.data.data.slice(0, itemsPerPage));
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching surah data:', error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchSurahData();
+    fetchSurahData(setSurahData).then(() => setIsLoading(false));
   }, []);
 
-  const handleLoadMore = () => {
-    if (currentPage * itemsPerPage < surahData.length && !isFetchingMore) {
-      loadMoreData();
+  useEffect(() => {
+    if (!searchQuery) {
+      setVisibleData(surahData);
+    } else {
+      const filteredData = surahData.filter((data) =>
+        data.name.transliteration.id
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      );
+      setVisibleData(filteredData);
     }
-  };
+  }, [searchQuery, surahData]);
+
+  // useEffect(() => {
+  //   const fetchSurahData = async () => {
+  //     try {
+  //       const response = await axios.get('https://api.quran.gading.dev/surah');
+  //       setSurahData(response.data.data);
+  //       setVisibleData(response.data.data);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching surah data:', error);
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchSurahData();
+  // }, []);
 
   const getFilteredData = () => {
     if (!searchQuery) return visibleData;
@@ -50,15 +67,6 @@ const HomeTabSection = ({ searchQuery }) => {
         .toLowerCase()
         .includes(searchQuery.toLowerCase())
     );
-  };
-
-  const loadMoreData = () => {
-    setIsFetchingMore(true);
-    setTimeout(() => {
-      setCurrentPage((prevPage) => prevPage + 1);
-      setVisibleData(surahData.slice(0, (currentPage + 1) * itemsPerPage));
-      setIsFetchingMore(false);
-    }, 1500);
   };
 
   const navigation = useNavigation();
@@ -90,10 +98,7 @@ const HomeTabSection = ({ searchQuery }) => {
     }
 
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        onMomentumScrollEnd={handleLoadMore}
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           {filteredData.map((data) => (
             <QuranListCard
@@ -102,11 +107,6 @@ const HomeTabSection = ({ searchQuery }) => {
               onPress={() => handleCardPress(data.number)}
             />
           ))}
-          {isFetchingMore && (
-            <View style={styles.loadingMoreContainer}>
-              <ActivityIndicator size="small" color="#65D6FC" />
-            </View>
-          )}
         </View>
       </ScrollView>
     );
@@ -180,11 +180,6 @@ const styles = StyleSheet.create({
   tabStyle: { width: 200 },
   loadingContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loadingMoreContainer: {
-    marginVertical: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
