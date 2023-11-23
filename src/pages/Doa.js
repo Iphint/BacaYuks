@@ -44,7 +44,10 @@ const Doa = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         {isSearchVisible ? (
-          <Search placeholder={'Cari doa yang Anda inginkan...'} onSearch={(text) => setSearchText(text)}/>
+          <Search
+            placeholder={'Cari doa yang Anda inginkan...'}
+            onSearch={(text) => setSearchText(text)}
+          />
         ) : (
           <Text style={styles.title}>Doa sehari hari.</Text>
         )}
@@ -54,17 +57,23 @@ const Doa = () => {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ marginBottom: 80, marginHorizontal: 7 }}
+        style={{ marginHorizontal: 7 }}
       >
-        {filteredDoaList.map((doa) => (
-          <CardDoa
-            key={doa.id}
-            doa={doa.doa}
-            ayat={doa.ayat}
-            latin={doa.latin}
-            artinya={doa.artinya}
-          />
-        ))}
+        {filteredDoaList.length === 0 ? (
+          <View style={styles.noDataContainer}>
+            <Text style={styles.noDataText}>Doa tidak ditemukan.</Text>
+          </View>
+        ) : (
+          filteredDoaList.map((doa) => (
+            <CardDoa
+              key={doa.id}
+              doa={doa.doa}
+              ayat={doa.ayat}
+              latin={doa.latin}
+              artinya={doa.artinya}
+            />
+          ))
+        )}
       </ScrollView>
     </View>
   );
@@ -74,6 +83,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
     backgroundColor: '#455EB5',
+    flex: 1,
   },
   header: {
     flexDirection: 'row',
@@ -89,6 +99,15 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     fontSize: 34,
+  },
+  noDataContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noDataText: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
 
