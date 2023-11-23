@@ -26,9 +26,7 @@ const SignUp = () => {
       <View style={styles.logo}>
         <Image source={QuranLogo} />
       </View>
-      <View style={styles.bluePopUp}>
-        <Text>coba</Text>
-      </View>
+      <View style={styles.bluePopUp}/>
       <View style={styles.containerOne}>
         <CustomInputText placeholder={'Email'} />
         <Gap height={30} />
