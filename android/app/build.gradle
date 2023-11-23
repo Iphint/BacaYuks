@@ -81,7 +81,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.bacayuks"
+    namespace 'com.iphint.BacaYuks'
     defaultConfig {
         applicationId 'com.iphint.BacaYuks'
         minSdkVersion rootProject.ext.minSdkVersion

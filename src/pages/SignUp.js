@@ -6,6 +6,8 @@ import Button from '../components/atoms/Button';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+import { QuranLogo } from '../assets';
+import { Image } from 'react-native';
 
 const SignUp = () => {
   let [fontsLoaded] = useFonts({
@@ -21,20 +23,21 @@ const SignUp = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.textTitle}>Sign Up</Text>
+      <View style={styles.logo}>
+        <Image source={QuranLogo} />
       </View>
-      <CustomInputText title={'Email'} placeholder={'Email ...'} />
+      <View style={styles.bluePopUp}></View>
+      <View style={styles.containerOne}>
+      <CustomInputText
+      placeholder={'Email'} />
       <Gap height={30} />
       <CustomInputText
-        title={'Password'}
-        placeholder={'Password ...'}
+        placeholder={'Kata Sandi'}
         isPassword={true}
       />
       <Gap height={30} />
       <CustomInputText
-        title={'Repeat Password'}
-        placeholder={'Repeat password ...'}
+        placeholder={'Ulangi Kata Sandi'}
         isPassword={true}
       />
       <Gap height={40} />
@@ -47,6 +50,7 @@ const SignUp = () => {
           <Text style={styles.haveAccountTextLogin}>Login</Text>
         </TouchableOpacity>
       </View>
+      </View>
     </View>
   );
 };
@@ -56,21 +60,12 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#455EB5',
+    backgroundColor: 'black',
+    position: 'relative'
   },
-  title: {
+  logo: {
     marginTop: 60,
-    borderBottomWidth: 2,
     alignItems: 'center',
-    marginHorizontal: 70,
-    borderBottomColor: '#65D6FC',
-    marginBottom: 30,
-  },
-  textTitle: {
-    fontSize: 50,
-    color: '#ffff',
-    paddingBottom: 24,
-    fontFamily: 'Poppins-Regular'
   },
   haveAccount: {
     flexDirection: 'row',
@@ -85,4 +80,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   },
+  containerOne: {
+    backgroundColor: "white",
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    zIndex: 2,
+    position: 'relative',
+  },
+  
+  bluePopUp: {
+    backgroundColor: "red",
+    height: 40,
+    top: 0,
+    right: 0,
+    
+    position: 'absolute', 
+    zIndex: 1, 
+  }
 });

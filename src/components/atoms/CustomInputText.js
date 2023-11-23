@@ -17,7 +17,7 @@ const CustomInputText = ({ title, placeholder, isPassword }) => {
         style={styles.input}
         placeholder={placeholder}
         value={inputValue}
-        placeholderTextColor="#FFFFFF"
+        placeholderTextColor="rgba(178, 236, 255, 0.8)"
         secureTextEntry={isPassword}
         onChangeText={(text) => setInputValue(text)}
       />
@@ -29,18 +29,15 @@ export default CustomInputText;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: 30,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 8,
-    marginTop: 8,
-    borderRadius: 10,
-  },
-  title: {
-    fontSize: 17,
-    color: '#ffff',
-    fontFamily: 'Poppins-Regular'
+    borderWidth: 2,
+    borderTopWidth: 3,
+    borderBottomWidth:3,
+    borderColor: '#b2ecff',
+    padding: 5,
+    paddingLeft: 12,
+    borderRadius: 15,
   },
 });
