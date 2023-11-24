@@ -1,12 +1,16 @@
+// screens/Profile.js
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 import { Emoji } from '../assets/icons';
 import Gap from '../components/atoms/Gap';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
+import ToggleSwitch from '../components/atoms/ToogleSwitch';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
+  const [isNotificationEnabled, setIsNotificationEnabled] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,7 +25,75 @@ const Profile = () => {
     };
 
     fetchUserData();
+
+    scheduleDailyNotifications();
   }, []);
+
+  const scheduleDailyNotifications = async () => {
+    try {
+      // Clear existing scheduled notifications
+      await Notifications.cancelAllScheduledNotificationsAsync();
+
+      // Schedule notification at 12 PM
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Baca Quran Sekarang!',
+          body: 'Waktunya membaca Quran.',
+          sound: 'default',
+        },
+        trigger: {
+          hour: 12,
+          minute: 0,
+          repeats: true,
+        },
+      });
+
+      // Schedule notification at 12 AM
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Baca Quran Sekarang!',
+          body: 'Waktunya membaca Quran.',
+          sound: 'default',
+        },
+        trigger: {
+          hour: 0,
+          minute: 0,
+          repeats: true,
+        },
+      });
+    } catch (error) {
+      console.error('Error scheduling notifications:', error);
+    }
+  };
+
+  const handleToggleNotification = async (value) => {
+    setIsNotificationEnabled(value);
+
+    if (value) {
+      await registerForPushNotificationsAsync();
+    } else {
+    }
+  };
+
+  const registerForPushNotificationsAsync = async () => {
+    try {
+      const { status } = await Notifications.getPermissionsAsync();
+      if (status !== 'granted') {
+        const { status: newStatus } =
+          await Notifications.requestPermissionsAsync();
+        if (newStatus !== 'granted') {
+          alert('Failed to get push token for push notification!');
+          return;
+        }
+      }
+
+      const expoPushToken = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(expoPushToken);
+    } catch (error) {
+      console.error('Error registering for push notifications:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
@@ -33,14 +105,18 @@ const Profile = () => {
             <Text style={styles.text}>Hallo, {userData.name}</Text>
             <Gap height={20} />
             <Text style={styles.text}>{userData.email}</Text>
+            <Gap height={20} />
+            <Text style={{ color: '#fff' }}>Enable notification</Text>
+            <ToggleSwitch
+              isNotificationEnabled={isNotificationEnabled}
+              onToggle={handleToggleNotification}
+            />
           </View>
         )}
       </View>
     </View>
   );
 };
-
-export default Profile;
 
 const styles = StyleSheet.create({
   container: {
@@ -64,3 +140,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default Profile;

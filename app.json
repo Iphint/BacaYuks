@@ -14,6 +14,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "permissions": ["NOTIFICATIONS"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.iphint.BacaYuks"
