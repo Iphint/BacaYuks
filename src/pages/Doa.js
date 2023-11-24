@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
-  TextInput,
 } from 'react-native';
 import CardDoa from '../components/CardDoa';
 import Search from '../components/Search';
@@ -27,7 +26,6 @@ const Doa = () => {
         );
         const data = await res.json();
         setDoaList(data);
-        console.log(data);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
