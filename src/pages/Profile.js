@@ -12,54 +12,56 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [isNotificationEnabled, setIsNotificationEnabled] = useState(false);
 
+  const prayerTimes = {
+    Fajr: '05:00',
+    Dhuhr: '12:00',
+    Asr: '15:30',
+    Maghrib: '18:45',
+    Isha: '20:00'
+  };
+  
+
   useEffect(() => {
-    const fetchUserData = async () => {
+    const initializeApp = async () => {
       try {
         const savedUserData = await AsyncStorage.getItem('userSession');
         if (savedUserData !== null) {
           setUserData(JSON.parse(savedUserData));
         }
+  
+        const notificationEnabled = await AsyncStorage.getItem('isNotificationEnabled');
+        const isNotifEnabled = notificationEnabled !== null ? JSON.parse(notificationEnabled) : false;
+        setIsNotificationEnabled(isNotifEnabled);
+  
+        if (isNotifEnabled) {
+          await scheduleDailyNotifications();
+        }
       } catch (e) {
-        console.error('Failed to load user data:', e);
+        console.error('Failed to initialize app:', e);
       }
     };
-
-    fetchUserData();
-
-    scheduleDailyNotifications();
+  
+    initializeApp();
   }, []);
 
   const scheduleDailyNotifications = async () => {
     try {
-      // Clear existing scheduled notifications
       await Notifications.cancelAllScheduledNotificationsAsync();
 
-      // Schedule notification at 12 PM
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: 'Baca Quran Sekarang!',
-          body: 'Waktunya membaca Quran.',
-          sound: 'default',
-        },
-        trigger: {
-          hour: 12,
-          minute: 0,
-          repeats: true,
-        },
-      });
-
-      // Schedule notification at 12 AM
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: 'Baca Quran Sekarang!',
-          body: 'Waktunya membaca Quran.',
-          sound: 'default',
-        },
-        trigger: {
-          hour: 0,
-          minute: 0,
-          repeats: true,
-        },
+      Object.entries(prayerTimes).forEach(async ([prayerName, time]) => {
+        const [hour, minute] = time.split(':').map(Number);
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: 'Baca Quran Sekarang!',
+            body: `Waktunya membaca Quran. Waktu ${prayerName}`,
+            sound: 'default',
+          },
+          trigger: {
+            hour,
+            minute,
+            repeats: true,
+          },
+        });
       });
     } catch (error) {
       console.error('Error scheduling notifications:', error);
@@ -68,10 +70,13 @@ const Profile = () => {
 
   const handleToggleNotification = async (value) => {
     setIsNotificationEnabled(value);
+    await AsyncStorage.setItem('isNotificationEnabled', JSON.stringify(value));
 
     if (value) {
       await registerForPushNotificationsAsync();
+      await scheduleDailyNotifications();
     } else {
+      await Notifications.cancelAllScheduledNotificationsAsync();
     }
   };
 
