@@ -7,6 +7,7 @@ import Gap from '../components/atoms/Gap';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
 import ToggleSwitch from '../components/atoms/ToogleSwitch';
+import Toast from 'react-native-toast-message';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -75,8 +76,20 @@ const Profile = () => {
     if (value) {
       await registerForPushNotificationsAsync();
       await scheduleDailyNotifications();
+      Toast.show({
+        type: 'success',
+        position: 'top',
+        text1: 'Notification has been enabled.',
+        visibilityTime: 2000,
+      });
     } else {
       await Notifications.cancelAllScheduledNotificationsAsync();
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Notification has been disabled.',
+        visibilityTime: 2000,
+      });
     }
   };
 
