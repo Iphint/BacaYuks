@@ -9,7 +9,7 @@ Install my-project with npm
 ```bash
   npm install
   then
-  npx expo start
+  yarn start
 ```
     
 ## Task Tugas per masing masing mahasiswa
