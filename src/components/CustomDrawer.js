@@ -84,7 +84,12 @@ const styles = StyleSheet.create({
   imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#455EB5',
+    backgroundColor: 'white',
+    borderBottomWidth: 4,
+    borderBottomColor: 'rgba(105, 215, 252, 1)',
+    borderBottomStartRadius: 30,
+    borderBottomEndRadius: 30,
+
   },
   textContainer: {
     justifyContent: 'center',
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   textContent: {
-    color: 'white',
+    color: 'rgba(105, 215, 252, 1)',
     fontFamily: 'Poppins-Regular',
   },
   drawerContent: {
