@@ -16,6 +16,7 @@ export default CardDoa;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,

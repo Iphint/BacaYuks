@@ -30,6 +30,7 @@ const Login = () => {
       </View>
       <View style={styles.bluePopUp}/>
       <View style={styles.containerOne}> 
+      <Text style={styles.title}>Masuk</Text>
         <CustomInputText placeholder={'Email'} />
         <Gap height={30} />
         <CustomInputText
@@ -66,12 +67,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    marginTop: 60,
-    borderBottomWidth: 2,
-    alignItems: 'center',
-    marginHorizontal: 70,
-    borderBottomColor: '#65D6FC',
-    marginBottom: 30,
+    paddingLeft:46,
+    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    color: '#69D7FC'
   },
   textTitle: {
     fontSize: 50,
