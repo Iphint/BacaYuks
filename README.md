@@ -9,7 +9,19 @@ Install my-project with npm
 ```bash
   npm install
   then
+```
+if you don't have yarn
+```bash
+  npm i yarn -g
+```
+```bash
+  then
   yarn start
+```
+
+build android 
+```bash
+yarn android
 ```
     
 ## Task Tugas per masing masing mahasiswa
