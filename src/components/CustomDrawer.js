@@ -86,7 +86,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     borderBottomWidth: 4,
-    borderBottomColor: 'rgba(105, 215, 252, 1)',
+    borderRightWidth: 1,
+    borderLeftWidth:1,
+    borderColor: 'rgba(105, 215, 252, 1)',
+    overflow:'hidden',
     borderBottomStartRadius: 30,
     borderBottomEndRadius: 30,
 
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
   },
   drawerContent: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   logoutContainer: {
     flexDirection: 'row',

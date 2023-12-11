@@ -31,7 +31,7 @@ const QuranListCard = ({ surahData, onPress, isLoading }) => {
           <Text style={styles.namaAyat}>{name.transliteration.id}</Text>
           <View style={styles.ayatDesc}>
             <Text style={styles.ayatSubDesc}>{revelation.id}</Text>
-            <Image source={Point} style={{ width: 20, height: 20 }} />
+            <Image source={Point} style={{ width: 20, height: 20 ,color:'rgba(105, 215, 252, 1)'}} />
             <Text style={styles.ayatSubDesc}>{numberOfVerses} Ayat</Text>
           </View>
         </View>
