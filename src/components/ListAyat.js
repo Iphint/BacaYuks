@@ -93,34 +93,39 @@ const ListAyat = ({ surahData }) => {
     }
   };
 
-  const toggleBookmark = async (verseNumber) => {
+  const toggleBookmark = async (verseNumber, surahName) => {
     let bookmarks = await AsyncStorage.getItem('bookmarks');
     bookmarks = bookmarks ? JSON.parse(bookmarks) : [];
-    const isBookmarked = bookmarkedVerses[verseNumber];
+    const bookmarkIndex = bookmarks.findIndex(
+      (bm) => bm.number === verseNumber && bm.surahName === surahName
+    );
 
-    if (isBookmarked) {
-      bookmarks = bookmarks.filter((verse) => verse.number !== verseNumber);
+    if (bookmarkIndex !== -1) {
+      bookmarks.splice(bookmarkIndex, 1); // Remove the bookmark
       Toast.show({
         type: 'error',
         position: 'top',
-        text1: 'Ayat telah di hapus.',
+        text1: 'Ayat telah dihapus.',
         visibilityTime: 2000,
       });
     } else {
-      bookmarks.push({ number: verseNumber });
+      bookmarks.push({ number: verseNumber, surahName });
       Toast.show({
         type: 'success',
         position: 'top',
-        text1: 'Ayat telah di tandai.',
+        text1: 'Ayat telah ditandai.',
         visibilityTime: 2000,
       });
     }
 
     await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    updateBookmarkMap(bookmarks);
+  };
 
+  const updateBookmarkMap = (bookmarks) => {
     const bookmarkMap = {};
-    bookmarks.forEach((verse) => {
-      bookmarkMap[verse.number] = true;
+    bookmarks.forEach((bm) => {
+      bookmarkMap[`${bm.surahName}-${bm.number}`] = true;
     });
     setBookmarkedVerses(bookmarkMap);
   };
@@ -166,10 +171,17 @@ const ListAyat = ({ surahData }) => {
               </TouchableOpacity>
               <Gap width={15} />
               <TouchableOpacity
-                onPress={() => toggleBookmark(verse.number.inSurah)}
+                onPress={() =>
+                  toggleBookmark(
+                    verse.number.inSurah,
+                    surahData.name.transliteration.id
+                  )
+                }
                 activeOpacity={0.7}
               >
-                {bookmarkedVerses[verse.number.inSurah] ? (
+                {bookmarkedVerses[
+                  `${surahData.name.transliteration.id}-${verse.number.inSurah}`
+                ] ? (
                   <Image
                     source={BookmarkActive}
                     style={{ width: 20, height: 20 }}
