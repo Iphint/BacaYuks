@@ -130,7 +130,7 @@ const HomeTabSection = ({ searchQuery }) => {
         <Text
           style={{
             fontFamily: 'Poppins-Regular',
-            color: focused ? '#65D6FC' : '#D2E0FB',
+            color: focused ? 'rgba(105, 215, 252, 1)' : 'rgba(30, 30, 30, 0.23)',
           }}
         >
           {route.title}
@@ -148,8 +148,8 @@ const HomeTabSection = ({ searchQuery }) => {
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'first', title: 'Quran List' },
-    { key: 'second', title: 'Surah Pilihan' },
+    { key: 'first', title: 'Daftar' },
+    { key: 'second', title: 'Favorit' },
   ]);
 
   return (
@@ -167,13 +167,14 @@ export default HomeTabSection;
 
 const styles = StyleSheet.create({
   indicator: {
-    backgroundColor: '#65D6FC',
-    height: 4,
-    width: '35%',
+    backgroundColor: 'rgba(105, 215, 252, 1)',
+    height: 10,
+    width: '40%',
+    borderRadius:15,
     marginHorizontal: 30,
   },
   tabBarStyle: {
-    backgroundColor: '#455EB5',
+    backgroundColor: 'white',
     elevation: 0,
     shadowOpacity: 0,
   },

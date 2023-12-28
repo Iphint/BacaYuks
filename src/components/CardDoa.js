@@ -18,6 +18,12 @@ export default CardDoa;
 
 const styles = StyleSheet.create({
   container: {
+<<<<<<< HEAD
+=======
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+>>>>>>> bacaYuks-1.0
     borderWidth: 1,
     width: '100%',
     padding: 10,

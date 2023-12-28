@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+=======
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+>>>>>>> bacaYuks-1.0
 import CustomInputText from '../components/atoms/CustomInputText';
 import Gap from '../components/atoms/Gap';
 import Button from '../components/atoms/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+<<<<<<< HEAD
 import { GET_ALL_USERS } from '../utils/Mutation';
 import { useQuery } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+=======
+import { QuranLogo } from '../assets';
+>>>>>>> bacaYuks-1.0
 
 const Login = () => {
   let [fontsLoaded] = useFonts({
@@ -69,9 +78,10 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.textTitle}>Sign In</Text>
+      <View style={styles.logo}>
+        <Image source={QuranLogo} />
       </View>
+<<<<<<< HEAD
       <CustomInputText
         title={'Email'}
         placeholder={'Masukan email anda...'}
@@ -96,8 +106,31 @@ const Login = () => {
         <Gap width={7} />
         <TouchableOpacity onPress={handlePress}>
           <Text style={styles.haveAccountTextLogin}>Register</Text>
+=======
+      <View style={styles.bluePopUp}/>
+      <View style={styles.containerOne}> 
+      <Text style={styles.title}>Masuk</Text>
+        <CustomInputText placeholder={'Email'} />
+        <Gap height={30} />
+        <CustomInputText
+          placeholder={'Kata Sandi'}
+          isPassword={true}
+        />
+        <Gap height={40} />
+        <TouchableOpacity onPress={handleLogin}>
+          <Button button={'Masuk'} />
+>>>>>>> bacaYuks-1.0
         </TouchableOpacity>
-      </View>
+        <Gap height={20} />
+        <View style={styles.haveAccount}>
+          <Text style={styles.haveAccountText}>Belum Punya Akun?</Text>
+          <Gap width={7} />
+          <TouchableOpacity onPress={handlePress}>
+            <Text style={styles.haveAccountTextLogin}>Daftar</Text>
+          </TouchableOpacity>
+        </View>
+    </View>
+      
     </View>
   );
 };
@@ -107,15 +140,17 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#455EB5',
+    backgroundColor: 'white',
+  },
+  logo: {
+    marginTop: 60,
+    alignItems: 'center',
   },
   title: {
-    marginTop: 60,
-    borderBottomWidth: 2,
-    alignItems: 'center',
-    marginHorizontal: 70,
-    borderBottomColor: '#65D6FC',
-    marginBottom: 30,
+    paddingLeft:46,
+    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    color: '#69D7FC'
   },
   textTitle: {
     fontSize: 50,
@@ -128,12 +163,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   haveAccountText: {
-    color: '#ffff',
+    color: 'rgba(30,30,30, 0.23)',
     fontSize: 15,
   },
   haveAccountTextLogin: {
     color: '#65D6FC',
     fontWeight: 'bold',
     fontSize: 15,
+  },
+  containerOne: {
+    flex: 1,
+    marginTop: 60,
+    backgroundColor: 'white',
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    paddingTop: 21,
+    position: 'relative',
+  },
+  bluePopUp: {
+    backgroundColor: '#69D7FC',
+    position: 'absolute',
+    width: '100%',
+    height: 100,
+    marginTop: 320,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
   },
 });
