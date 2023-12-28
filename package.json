@@ -47,11 +47,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-toast-message": "^2.1.6",
-<<<<<<< HEAD
-    "uuid": "^9.0.1"
-=======
+
     "yarn": "^1.22.19"
->>>>>>> bacaYuks-1.0
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
