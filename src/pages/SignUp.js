@@ -157,33 +157,48 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#455EB5',
+    backgroundColor: 'white',
+    position: 'relative',
   },
   title: {
-    marginTop: 60,
-    borderBottomWidth: 2,
-    alignItems: 'center',
-    marginHorizontal: 70,
-    borderBottomColor: '#65D6FC',
-    marginBottom: 30,
+    paddingLeft:46,
+    fontFamily: 'Poppins-Bold',
+    fontSize: 24,
+    color: '#69D7FC'
   },
-  textTitle: {
-    fontSize: 50,
-    color: '#ffff',
-    paddingBottom: 24,
-    fontFamily: 'Poppins-Regular',
+  logo: {
+    marginTop: 60,
+    alignItems: 'center',
   },
   haveAccount: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   haveAccountText: {
-    color: '#ffff',
+    color: 'rgba(30,30,30, 0.23)',
     fontSize: 15,
   },
   haveAccountTextLogin: {
     color: '#65D6FC',
     fontWeight: 'bold',
     fontSize: 15,
+  },
+  containerOne: {
+    flex: 1,
+    marginTop: 60,
+    backgroundColor: 'white',
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    paddingTop: 21,
+    position: 'relative',
+  },
+  bluePopUp: {
+    backgroundColor: '#69D7FC',
+    position: 'absolute',
+    width: '100%',
+    height: 100,
+    marginTop: 320,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
   },
 });
