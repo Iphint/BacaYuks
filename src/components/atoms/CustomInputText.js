@@ -28,14 +28,18 @@ export default CustomInputText;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: 30,
+    alignSelf: "center",
+    width:320,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 8,
-    marginTop: 8,
-    borderRadius: 10,
+    borderWidth: 2,
+    borderTopWidth: 3,
+    borderBottomWidth:3,
+    borderColor: '#b2ecff',
+    padding: 5,
+    paddingLeft: 12,
+    borderRadius: 15,
   },
   title: {
     fontSize: 17,
