@@ -48,10 +48,17 @@ export default QuranListCard;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderBottomWidth: 2,
-    borderColor: 'gray',
+    borderBottomWidth: 4,
+    borderTopWidth: 4,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderRadius: 30,
     marginHorizontal: 20,
     paddingVertical: 20,
+    marginTop:10,
+    marginBottom: 10,
+    backgroundColor:'white',
+    borderColor: 'rgba(105, 215, 252, 0.8)',
     alignItems: 'center',
   },
   ayatNumberContainer: {
@@ -71,23 +78,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   ayatText: {
-    color: '#65D6FC',
+    color: 'rgba(105, 215, 252, 1)',
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
+    
   },
   namaAyat: {
     fontSize: 20,
-    color: '#65D6FC',
+    color: 'rgba(105, 215, 252, 1)',
     fontFamily: 'Poppins-SemiBold',
   },
   ayatSubDesc: {
     fontSize: 14,
     textTransform: 'uppercase',
-    color: '#ffff',
+    color: 'rgba(30, 30, 30, 0.23)',
     fontFamily: 'Poppins-Regular',
   },
   ayatSubDescArabic: {
     fontSize: 22,
-    color: '#ffff',
+    color: 'rgba(105, 215, 252, 1)',
   },
 });
