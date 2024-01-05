@@ -18,12 +18,12 @@ export default CardDoa;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 1,
-    width: '100%',
-    padding: 10,
-    marginBottom: 30,
-    borderColor: '#ffff',
-    borderRadius: 10,
+    width: 100,
+    marginHorizontal: 5,
   },
   title: {
     fontSize: 20,
