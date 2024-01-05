@@ -167,19 +167,25 @@ export default HomeTabSection;
 
 const styles = StyleSheet.create({
   indicator: {
-    backgroundColor: '#65D6FC',
-    height: 4,
-    width: '35%',
+    backgroundColor: 'rgba(105, 215, 252, 1)',
+    height: 10,
+    width: '40%',
+    borderRadius:15,
     marginHorizontal: 30,
   },
   tabBarStyle: {
-    backgroundColor: '#455EB5',
+    backgroundColor: 'white',
     elevation: 0,
     shadowOpacity: 0,
   },
   tabStyle: { width: 200 },
   loadingContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingMoreContainer: {
+    marginVertical: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
